@@ -41,21 +41,38 @@ public class Client {
 
         System.out.print("\nWould you like to toggle the availability of a book? Enter YES or NO: ");
         userInput = in.nextLine();
-        // Input validation
+
+        // Input validation ensuring either 'yes' or 'no' is inputted
         while(!userInput.equalsIgnoreCase("YES") && !userInput.equalsIgnoreCase("NO")){
             System.out.print("Invalid Answer. Please enter Yes or No: ");
             userInput = in.nextLine();
         }
 
+        // If userInput equals Yes, the following code will execute
         if(userInput.equalsIgnoreCase("YES")){
+            // User's input assigned to variable userInput
             System.out.print("Type the book that you want to toggle the availability of: ");
             userInput = in.nextLine();
+
+            // input validation for book title
+            for(int counter = 0; counter < newLibrary.LibraryCollection.size(); counter++){
+                if(!newLibrary.LibraryCollection.get(counter).getTitle().equalsIgnoreCase(userInput)){
+                    System.out.print("Title does not match any book in system. Please try again: ");
+                    userInput = in.nextLine();
+                }
+            }
+            // for loop goes through newLibrary's arraylist. Compares the value within the current index with the
+            // value within userInput. If the values match, then the toggleAvailability method will be called,
+            // changing the boolean value from true to false, or 'On Shelf' to 'Checked Out'
             for(int index = 0; index < newLibrary.LibraryCollection.size(); index++){
                 if(newLibrary.LibraryCollection.get(index).getTitle().equalsIgnoreCase(userInput)){
                     newLibrary.LibraryCollection.get(index).toggleAvailability();
                 }
             }
         }
+
+
+
         newLibrary.listBook();
     }
 }

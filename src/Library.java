@@ -1,11 +1,3 @@
-//Create a class named Library that contains:
-//An ArrayList<Book> to store the collection of books.
-
-//A method addBook(Book book) to add a book to the collection.
-//A method removeBook(String title) to remove a book by its title.
-//A method listBooks() that prints out all the books in the library, including their availability status.
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
